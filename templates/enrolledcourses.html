@@ -1,0 +1,72 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html>
+
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+
+
+
+<title> Students Portal </title>
+
+<body>
+
+    <header>
+         <nav class="navbar navbar-inverse">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <a class="navbar-brand" href="#">RDS</a>
+                </div>
+
+            <ul class="nav navbar-nav">
+
+                <li class="active" class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">check!<span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+
+                        <li><a href="">Grade</a></li>
+                        <li><a href="">Attendance</a></li>
+
+                    </ul>
+                </li>
+
+                <li><a href="/studentaddcourse">Add Course</a></li>
+                <li><a href="/enrolledcourses">Enrolled Courses</a></li>
+                <li><a href="#">contact</a></li>
+                {%  if student.id  is None  %}
+                    <li><a href="/studentlogout/">Login</a></li>
+                    {% else %}
+                    <li><a href="/studentlogout/">Logout</a></li>
+                {% endif %}
+
+
+            </ul>
+            </div>
+
+            </nav>
+
+            <p style = "text-align: center; font-size: 20px  " ><strong>{{ student.name }}</strong> is logged in!</p>
+
+
+
+    </header>
+  
+
+    <div class="container">
+    <br>
+      <div class="list-group" >
+
+        {% for item in student_courses %}
+            <a href="" class="list-group-item list-group-item-action">{{ item.teacher_course_id.course_id.name }}</a>
+        {% endfor %}
+
+      </div>
+
+    </div>
+
+</body>
+</html>

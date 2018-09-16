@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<title>ADMIN</title>
+  
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+</head>
+
+<body>
+    
+    <nav class="navbar navbar-inverse">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="#">RDS</a>
+            </div>
+    
+        <ul class="nav navbar-nav">
+            <li class="active"  class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Add <span class="caret"></span></a>
+                <ul class="dropdown-menu">
+                    <li><a href="/adminstudent">Students</a></li>
+                    <li><a href="/adminteacher">Teachers</a></li>
+                    <li><a href="/admindepartment">Department</a></li>
+                    <li><a href="/adminpost">post</a></li>
+                    <li><a href="/admincourses">Courses</a></li>
+                    <li><a href="/adminsemester">Semester</a></li>
+                    <li><a href="/adminroom">Rooms</a></li>
+                    <li><a href="/admingrade">Grade</a></li>
+                    <li><a href="/adminclassinfo">Class Information</a></li>
+
+                </ul>
+            </li>
+
+           <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Show list <span class="caret"></span></a>
+                <ul class="dropdown-menu">
+                    <li><a href="/studentlist">Students</a></li>
+                    <li><a href="/teacherlist">Teachers</a></li>
+                    <li><a href="/">Department</a></li>
+                    <li><a href="/">post</a></li>
+                    <li><a href="/">Courses</a></li>
+                    <li><a href="/">Semester</a></li>
+                    <li><a href="/">Rooms</a></li>
+                    <li><a href="/">Grade</a></li>
+                    <li><a href="/">Class Information</a></li>
+
+                </ul>
+            </li>
+
+
+
+            <li><a href="/adminstudent">Add Student</a></li>
+            <li><a href="/adminteacher">Add Teacher</a></li>
+           {%  if admin.id  is None  %}
+               <li><a href="/adminlogout/">Login</a></li>
+               {% else %}
+               <li><a href="/adminlogout/">Logout</a></li>
+           {% endif %}
+      
+        </ul>
+        </div>
+    </nav>
+  
+
+    <div class="container">
+        <h3>Admin<strong> {{ admin.name }}</strong> is Logged in.</h3><br>
+            <h4>Instructions!</h4>
+
+
+            <p>1. hey dont mess up.<br>
+            2. keep it going.
+            </p>
+    
+    
+    </div>
+
+</body>
+</html>

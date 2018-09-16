@@ -1,0 +1,182 @@
+{% load staticfiles %}
+
+<!DOCTYPE html>
+<html>
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+{#<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">#}
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<link rel="stylesheet" href="{% static 'adminlte.min.css' %}">
+
+<title>Attendence System.</title>
+
+                {#navbar#}
+<header>
+
+    <style>
+
+ul {
+    list-style-type: none;
+    overflow: hidden;
+    background-color: #333;
+    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+    color: #9d9d9d
+
+}
+
+li {
+    float: left;
+}
+
+li a {
+
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+li a:hover {
+    {#background-color: #111;#}
+    color: #fff;
+    background-color: transparent;
+        }
+
+
+    </style>
+
+
+</header>
+
+
+<body>
+
+<ul>
+  <li><a class="active" href="/students">Home</a></li>
+  <li><a href="/studentlogout">Logout</a></li>
+
+</ul>
+
+
+
+
+
+<div>
+
+<form style="padding-left: 40px;padding-right: 40px" action = "" method="POST" role="form">
+
+<div class="card-body">
+        {% csrf_token %}
+
+
+<div class="card">
+            <div class="card-header">
+              <h3 class="card-title">Please select your course</h3>
+            </div>
+            <!-- /.card-header -->
+            <div class="card-body">
+              <table id="example1" class="table table-bordered table-striped">
+                <thead>
+                <tr>
+                  <th>Course Name</th>
+                  <th>Teacher name</th>
+                  <th>Days</th>
+                  <th>Start time</th>
+                  <th>End time</th>
+                  <th>Room No</th>
+                  <th>Add</th>
+                </tr>
+                </thead>
+
+                {% for item in teacher_courses %}
+                <tbody>
+                <tr>
+                  <td>{{ item.course_id.name }}</td>
+                  <td>{{ item.teacher_id.name }}</td>
+                  <td>{{ item.class_info_id.timing_id.days }}</td>
+                  <td>{{ item.class_info_id.timing_id.start_time }}</td>
+                  <td>{{ item.class_info_id.timing_id.end_time }}</td>
+                  <td>{{ item.class_info_id.rooms_id.room_no}}</td>
+                  <td><div class="card-footer">
+                        <button type="submit" value="{{ item.id }}" onclick="myFunction()" name="teacher_courses_id"
+                                                    class="btn btn-block btn-primary btn-sm">Add</button>
+                    </div>
+                  </td>
+                </tr>
+                {% endfor %}
+
+                </tbody>
+
+              </table>
+            </div>
+
+<script>
+function myFunction() {
+    alert("Course Saved!");
+}
+</script>
+            <!-- /.card-body -->
+
+          <!-- /.card -->
+
+        <!-- /.col -->
+</div>
+      <!-- /.row -->
+
+    <!-- /.content -->
+
+  <!-- /.content-wrapper -->
+  <footer class="main-footer">
+
+  </footer>
+
+
+
+    
+
+        <div class="form-group">
+            <input type="text" style="visibility: hidden" value="{{ student.id }}" name="student_id">
+        </div>
+
+        <div class="form-group">
+            <input type="text" style="visibility: hidden" value={{ notsubmittedgrade }} name="grade_id">
+        </div>
+
+
+
+
+{#        <div class="form-group">#}
+{#            <label for="exampleFormControlSelect2">Select Course:</label>#}
+{#            <select multiple class="form-control" style="padding: 30px 0px; font-weight: bold;" name ="teacher_courses_id">#}
+{#                {% for item in teacher_courses %}#}
+{#                    <option value="{{ item.id }}" name="teacher_courses_id"> <strong>Course:</strong>   {{ item.course_id.name }}. Teacher: {{ item.teacher_id.name }}.#}
+{#                                                {{ item.class_info_id.semester_id.name }} Class Information: {{ item.class_info_id.timing_id.days }}#}
+{#                                                {{ item.class_info_id.timing_id.start_time }}{{ item.class_info_id.timing_id.end_time }}#}
+{#                                                {{ item.class_info_id.rooms_id.room_no}}#}
+{#                    </option>#}
+{#                {% endfor %}#}
+{#            </select>#}
+{#        </div>#}
+
+
+
+    </div>
+               
+{#    <div class="card-footer">#}
+{#           <button type="submit" class="btn btn-primary">Submit</button>#}
+{#    </div>#}
+
+    
+</form>
+
+
+</div>
+
+
+
+</body>    
+
+</html>

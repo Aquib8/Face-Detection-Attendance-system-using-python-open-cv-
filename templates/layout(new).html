@@ -1,0 +1,20 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<title>Attendence System.</title>
+<link rel="stylesheet" type="text/css" href="{% static layout.css %}"> 
+    
+
+<body>
+    <header>
+        <nav>
+    <h2>NSU Portal</h2>
+        </nav>
+        
+        {% block content %}
+        {% endblock %}
+        
+    </header>
+</body>
+
+</html>

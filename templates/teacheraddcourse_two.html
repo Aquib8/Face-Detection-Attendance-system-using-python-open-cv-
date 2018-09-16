@@ -1,0 +1,170 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html>
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+{#<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">#}
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<link rel="stylesheet" href="{% static 'adminlte.min.css' %}">
+
+<title>Teacher Portal</title>
+
+<header>
+    <style>
+
+ul {
+    list-style-type: none;
+    overflow: hidden;
+    background-color: #333;
+    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+    color: #9d9d9d
+
+}
+
+li {
+    float: left;
+}
+
+li a {
+
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+li a:hover {
+    {#background-color: #111;#}
+    color: #fff;
+    background-color: transparent;
+            }
+
+
+    </style>
+
+</header>
+
+<body>
+
+<ul>
+  <li><a class="active" href="/teachers">Home</a></li>
+  <li><a href="/teacherlogout">Logout</a></li>
+
+</ul>
+
+  
+<form action = "" method="POST" role="form">
+    
+    <div class="card-body">
+        {% csrf_token %}
+
+{##}
+{##}
+{#<div class="form-group">#}
+{#    <label for="exampleFormControlSelect2">Select Course:</label>#}
+{#            <select multiple class="form-control" style="padding: 30px 0px; font-weight: bold;" name ="course_id">#}
+{#                {% for item2 in course %}#}
+{#                <option value="{{ item2.id }}" name="course_id">{{ item2.name }}</option>#}
+{#                {% endfor %}#}
+{#            </select>#}
+{#</div>#}
+{##}
+
+
+
+<div class="card" style="padding: 50px 50px">
+            <div class="card-header">
+              <h3 class="card-title">Please select your course</h3>
+            </div>
+            <!-- /.card-header -->
+            <div class="card-body">
+              <table id="example1" class="table table-bordered table-striped">
+                <thead>
+                <tr>
+                  <th>Course Name:</th>
+                  <th>Add</th>
+                </tr>
+                </thead>
+
+                {% for item2 in course %}
+                <tbody>
+                <tr>
+                  <td>{{ item2.name }}</td>
+
+                  <td><div class="card-footer">
+                        <button type="submit" value="{{ item2.id }}" onclick="myFunction()" name="course_id"
+                                                    class="btn btn-block btn-primary btn-sm">Add</button>
+                    </div>
+                  </td>
+                </tr>
+                {% endfor %}
+
+                </tbody>
+
+              </table>
+            </div>
+
+<script>
+function myFunction() {
+    alert("Course Saved!");
+}
+</script>
+            <!-- /.card-body -->
+
+          <!-- /.card -->
+
+        <!-- /.col -->
+</div>
+
+
+
+
+
+    <div class="form-group">
+{##}
+{#            <label for="exampleInputPassword1">Teacher Id</label>#}
+{#            <select name="teacher_id">#}
+{##}
+{#                <option value="{{ teacher.id }}" name="teacher_id">{{ teacher.name }}</option>#}
+{##}
+{#            </select>#}
+
+            <input type="text" style="visibility: hidden" value="{{ teacher.id }}" name="teacher_id">
+
+
+
+    </div>
+
+<div class="form-group">
+
+    <input type="text" style="visibility: hidden" value="{{ postclaainfo }}" name="class_info">
+
+</div>
+
+
+
+
+
+</div>
+               
+
+
+
+{##}
+{##}
+{#<div class="card-footer">#}
+{#    <button type="submit" class="btn btn-primary">Submit</button>#}
+{#</div>#}
+{##}
+
+
+
+    
+</form>
+    
+</body>    
+
+</html>

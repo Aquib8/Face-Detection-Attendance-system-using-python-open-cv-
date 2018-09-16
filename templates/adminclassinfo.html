@@ -1,0 +1,105 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html>
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+{#<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">#}
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<link rel="stylesheet" href="{% static 'adminlte.min.css' %}">
+
+<title>Attendence System.</title>
+
+                {#navbar#}
+<header>
+
+    <style>
+
+ul {
+    list-style-type: none;
+    overflow: hidden;
+    background-color: #333;
+    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+    color: #9d9d9d
+
+}
+
+li {
+    float: left;
+}
+
+li a {
+
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+li a:hover {
+    {#background-color: #111;#}
+    color: #fff;
+    background-color: transparent;
+            }
+
+
+    </style>
+
+        
+</header>
+
+<body>
+
+
+<ul>
+  <li><a class="active" href="/adminmain">Home</a></li>
+  <li><a href="/adminlogout">Logout</a></li>
+
+</ul>
+
+
+<form style="padding-left: 40px;padding-right: 40px" action = "" method="POST" role="form">
+    
+    <div class="card-body">
+        {% csrf_token %}
+
+        <div class="form-group">
+            <label for="exampleInputPassword1">time_id</label>
+             <select name="time_id">
+                {% for item in timing %}
+                <option value="{{ item.id }}" name="time_id">{{ item.days }} {{ item.start_time }}  {{ item.end_time }}</option>
+                {% endfor %}
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="InputPassword">Semester id</label>
+            <select name="semester_id">
+                {% for item in semester %}
+                <option value="{{ item.id }}" name="time_id">{{ item.name }} {{ item.start_date }}  {{ item.end_date }}</option>
+                {% endfor %}
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="InputPassword">Room Id</label>
+            <select name="room_id">
+                {% for item in room %}
+                <option value="{{ item.id }}" name="time_id">{{ item.room_no}}</option>
+                {% endfor %}
+            </select>
+        </div>
+                     
+            
+    </div>
+               
+    <div class="card-footer">
+           <button type="submit" class="btn btn-primary">Submit</button>
+    </div>
+
+    
+</form>
+    
+</body>    
+
+</html>

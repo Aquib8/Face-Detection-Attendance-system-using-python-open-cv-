@@ -1,0 +1,126 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html>
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+{#<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">#}
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<link rel="stylesheet" href="{% static 'adminlte.min.css' %}">
+
+<title>Attendence System.</title>
+
+                {#navbar#}
+<header>
+
+    <style>
+
+ul {
+    list-style-type: none;
+    overflow: hidden;
+    background-color: #333;
+    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+    color: #9d9d9d
+
+}
+
+li {
+    float: left;
+}
+
+li a {
+
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+li a:hover {
+    {#background-color: #111;#}
+    color: #fff;
+    background-color: transparent;
+            }
+
+
+    </style>
+
+
+</header>
+
+
+<body>
+
+
+<ul>
+  <li><a class="active" href="/adminmain">Home</a></li>
+  <li><a href="/adminlogout">Logout</a></li>
+
+</ul>
+
+
+
+  
+<form style="padding-right: 40px; padding-left: 40px" action = "" method="POST" role="form">
+    
+    <div class="card-body">
+        {% csrf_token %}
+
+        <div class="form-group">
+            <label for="exampleInputPassword1">Initial</label>
+            <input type="text" class="form-control" name="initial" id="InputInitial">
+        </div>
+        <div class="form-group">
+            <label for="InputPassword">Password</label>
+            <input type="text" class="form-control" name="password" id="InputPassword">
+        </div>
+        <div class="form-group">
+            <label for="InputName">Name</label>
+            <input type="text" class="form-control" name="name" id="InputName">
+        </div>
+        <div class="form-group">
+            <label for="InputAddress">Department id</label>
+             <select name="dept_id">
+                {% for item in department %}
+                <option value="{{ item.id }}" name="">{{ item.name }}</option>
+                {% endfor %}
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label for="InputPhone">Post id</label>
+             <select name="post_id">
+                {% for item in post %}
+                <option value="{{ item.id }}" name="">{{ item.name }}</option>
+                {% endfor %}
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label for="Inputemail">Role id</label>
+             <select name="role_id">
+                {% for item in roles %}
+                <option value="{{ item.id }}" name="">{{ item.name }}</option>
+                {% endfor %}
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="InputRole">Office Location</label>
+            <input type="text" class="form-control" name="office_location" id="OfficeLocation">
+        </div>
+                    
+            
+    </div>
+               
+    <div class="card-footer">
+           <button type="submit" class="btn btn-primary">Submit</button>
+    </div>
+
+    
+</form>
+    
+</body>    
+
+</html>

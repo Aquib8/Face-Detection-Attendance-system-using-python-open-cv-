@@ -1,0 +1,259 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html>
+
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+
+
+
+<title> Students Portal </title>
+
+<body>
+
+    <header>
+         <nav class="navbar navbar-inverse">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <a class="navbar-brand" href="#">RDS</a>
+                </div>
+
+            <ul class="nav navbar-nav">
+
+                <li class="active" class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">check!<span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+
+                        <li><a href="">Grade</a></li>
+                        <li><a href="">Attendance</a></li>
+
+                    </ul>
+                </li>
+
+                <li><a href="/studentaddcourse">Add Course</a></li>
+                <li><a href="/enrolledcourses">Enrolled Courses</a></li>
+                <li><a href="#">contact</a></li>
+                {%  if student.id  is None  %}
+                    <li><a href="/studentlogout/">Login</a></li>
+                    {% else %}
+                    <li><a href="/studentlogout/">Logout</a></li>
+                {% endif %}
+
+
+            </ul>
+            </div>
+         </nav>
+
+    <div style="font-size: 20px">
+        <p style = "text-align: center"><strong>{{ student.name }}</strong> is logged in!</p>
+    </div>
+
+    </header>
+
+
+
+{#    <div style="padding: 30px 30px">#}
+{##}
+{#        <div >#}
+{##}
+{#            <h3>General Information:<br></h3>#}
+{#                <p><strong>Id: {{ student.id }}<br>#}
+{#                Password: {{ student.password }}<br>#}
+{#                Name: {{ student.name }}<br>#}
+{#                Phone: {{ student.phone_number }}<br>#}
+{#                </strong></p>#}
+{##}
+{##}
+{##}
+{#        </div>#}
+
+{#        <div id = divtwo>#}
+{##}
+{##}
+{#                <strong><p id = pdivtwo>Department: {{ student.dept_id }} <br>#}
+{#                   Inistitute Id: {{ student.institute_id }} <br>#}
+{#                   Address: {{ student.address }} <br>#}
+{##}
+{#                   Email: {{ student.email_address }}<br>#}
+{#                   Picture Status: {{ student.pic_status }}<br>#}
+{#                </p></strong>#}
+{##}
+{##}
+{##}
+{##}
+{#        </div>#}
+
+
+
+
+<div style="margin: 50px 40px" class="page-wrapper">
+            <!-- ============================================================== -->
+            <!-- Bread crumb and right sidebar toggle -->
+            <!-- ============================================================== -->
+            <div class="page-breadcrumb">
+                <div class="row align-items-center">
+                    <div class="col-5">
+
+                    </div>
+                    <div class="col-7">
+
+                    </div>
+                </div>
+            </div>
+            <!-- ============================================================== -->
+            <!-- End Bread crumb and right sidebar toggle -->
+            <!-- ============================================================== -->
+            <!-- ============================================================== -->
+            <!-- Container fluid  -->
+            <!-- ============================================================== -->
+            <div class="container-fluid">
+                <!-- ============================================================== -->
+                <!-- Start Page Content -->
+                <!-- ============================================================== -->
+                <!-- Row -->
+                <div class="row">
+                    <!-- Column -->
+                    <div class="col-lg-4 col-xlg-3 col-md-5">
+                        <div class="card">
+                            <div class="card-body">
+                                <center class="m-t-30"> <img src={% static 'img/1.jpg' %} class="rounded-circle" width="150" />
+                                    <h4 class="card-title m-t-10"><strong>{{ student.name }}</strong></h4>
+                                    <div class="row text-center justify-content-md-center">
+                                        <div class="col-4"><a href="javascript:void(0)" class="link"><i class="icon-people"></i> <font class="font-medium">{{ student.institute_id }}</font></a></div>
+{#                                        <div class="col-4"><a href="javascript:void(0)" class="link"><i class="icon-picture"></i> <font class="font-medium">54</font></a></div>#}
+                                    </div>
+                                </center>
+                            </div>
+                            <div>
+                                <hr> </div>
+                            <div class="card-body"> <small class="text-muted">Email address </small>
+                                <h6><strong>{{ student.email_address }}</strong></h6> <small class="text-muted p-t-30 db">Phone</small>
+                                <h6><strong>{{ student.phone_number }}</strong></h6> <small class="text-muted p-t-30 db">Address</small>
+                                <h6><strong>{{ student.address }}</strong></h6> <small class="text-muted p-t-30 db">password</small>
+                                <h6><strong>{{ student.password }}</strong></h6>
+                                <div class="map-box">
+{#                                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d470029.1604841957!2d72.29955005258641!3d23.019996818380896!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x395e848aba5bd449%3A0x4fcedd11614f6516!2sAhmedabad%2C+Gujarat!5e0!3m2!1sen!2sin!4v1493204785508" width="100%" height="150" frameborder="0" style="border:0" allowfullscreen></iframe>#}
+                                </div> <small class="text-muted p-t-30 db"></small>
+                                <br/>
+
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Column -->
+                    <!-- Column -->
+                    <div class="col-lg-8 col-xlg-9 col-md-7">
+                        <div class="card">
+                            <div class="card-body">
+                                <form class="form-horizontal form-material">
+                                    <div class="form-group">
+                                        <label class="col-md-12">Full Name</label>
+                                        <div class="col-md-12">
+                                            <input type="text" placeholder="" class="form-control form-control-line" required>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="example-email" class="col-md-12">Email</label>
+                                        <div class="col-md-12">
+                                            <input type="email" placeholder="" class="form-control form-control-line" name="example-email" id="example-email" required>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-md-12">Password</label>
+                                        <div class="col-md-12">
+                                            <input type="password" value="" class="form-control form-control-line" required>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-md-12">Phone No</label>
+                                        <div class="col-md-12">
+                                            <input type="text" placeholder="" class="form-control form-control-line" required>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-md-12">Address</label>
+                                        <div class="col-md-12">
+                                            <input type="text" placeholder="" class="form-control form-control-line" required>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-md-12">department</label>
+                                        <div class="col-md-12">
+                                            <input type="text" placeholder="" class="form-control form-control-line" required>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="col-sm-12">
+                                            <button class="btn btn-primary">Update Profile</button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Column -->
+                </div>
+                <!-- Row -->
+                <!-- ============================================================== -->
+            </div>
+         </div>
+
+
+<div style = "margin-bottom: 50px; padding-left: 55px; float: start" class="">
+  <h3>Create Dataset</h3>
+  <!-- Trigger the modal with a button -->
+  <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">Open Modal</button>
+
+  <!-- Modal -->
+  <div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog">
+
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button style= "padding: 13px 13px 13px 13px" type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Create dataset</h4>
+        </div>
+        <div class="modal-body">
+          <p>3. Make sure that there is enough light.<br>
+             4. The backgroud should be white.<br>
+             5. Dont move after pressing the button.<br></p>
+        </div>
+          <form action="/create_dataset" method="POST">
+              {% csrf_token %}
+            <div class="form-group">
+{#                <label for="inputId">Enter Unique ID*</label>#}
+                <button style="float: right; margin-right: 30px" type="submit" class="btn btn-primary">Ready</button>
+                <input type="text" style="visibility: hidden" value="{{ student.id }}" class="form-control" name="userId" id="userId">
+{#                <input type="text" style="visibility: hidden" value="{{ student.id }}" name="student_id">#}
+
+
+            </div>
+          </form>
+
+
+      </div>
+
+    </div>
+  </div>
+
+</div>
+
+
+
+
+
+
+
+
+
+    </body>
+
+
+
+
+
+</html>

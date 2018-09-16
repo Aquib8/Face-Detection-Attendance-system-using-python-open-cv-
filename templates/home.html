@@ -1,0 +1,58 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+
+<html>
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+<title>Attendence System</title>
+
+<body style="background: #e9ecef">
+
+    <header>
+
+
+    </header>
+
+{#    <p style="padding-left: 10px"><strong>Students and teachers must login with their respective ids and passwords</strong></p>#}
+
+<div style="margin: 100px 460px; padding: 24px 0px;  background-color: #fff;box-shadow: 1px 1px 10px grey;">
+
+    <p style="text-align: center; font-family:Helvetica Neue,Helvetica,Arial,sans-serif"><strong>Please Login</strong></p>
+
+
+
+<form style="padding-left: 50px; padding-right: 50px" action = "" method="POST" role="form">
+
+    <div class="card-body">
+        {% csrf_token %}
+        <div class="form-group">
+            <label for="Id">Username</label>
+            <input type="text" class="form-control" id="InputId" name="username" required>
+        </div>
+        <div class="form-group">
+            <label for="exampleInputPassword1">Password</label>
+            <input type="text" class="form-control" name="password" id="" required>
+        </div>
+
+
+    </div>
+
+    <div class="card-footer">
+           <button type="submit" class="btn btn-primary">Submit</button>
+    </div>
+
+
+</form>
+
+
+</div>
+    
+</body>
+
+
+</html>

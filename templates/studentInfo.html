@@ -1,0 +1,59 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+
+<html>
+
+    <link rel="stylesheet" type="text/css" href="{% static 'studentInfo.css' %}">
+
+
+    <header>
+        <title>Student Information</title>
+            <nav>
+                <h2>NSU Portal</h2>
+            </nav>
+    
+    </header>
+
+    <body>
+        
+        <div id= "wholediv">
+            
+            <div id="firstcolum">
+
+                <img src={% static ''%}C:\Users\Lenovo\Desktop\face\ml\dataset/user.{{students.id}}.jpg alt="sarwar bhai" style="width:200px;height:200px;">
+            
+            </div>
+            
+            <div id="secondcolum">
+                
+                <p><b>Name:</b><strong>  {{ students.name }}</strong></p>
+                <p><b>Id:</b><strong>  {{students.id}} </strong></p>
+                <p><b>password: </b><strong>  {{students.confirm_password}}</strong></p>
+                <p><b>Institute:</b><strong>  {{students.institute_id}}</strong> </p>
+                <p><b>address:</b><strong>  {{students.address}}</strong></p>
+                
+        
+            </div>
+            
+            <div id = "thirdcolum">
+
+            
+                <p><b>Phone: </b><strong>  {{students.phone_number}}</strong></p>
+                <p><b>Email: </b><strong>  {{students.email_address}}</strong></p>
+                <p><b>Role id: </b><strong>  {{students.role_id}}</strong></p>
+                <p><b>Picture status:</b><strong>  {{students.pic_status}}</strong></p>
+                <p><b>department-id:</b><strong>  {{students.dept_id}}</strong></p>
+                
+                 
+            </div>
+            
+            
+                
+        
+        </div>
+            
+        
+    </body>
+    
+</html>
+

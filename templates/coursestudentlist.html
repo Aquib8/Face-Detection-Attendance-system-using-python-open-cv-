@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+
+<title>ADMIN</title>
+  
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+
+
+<body>
+    
+<header>
+         <nav class="navbar navbar-inverse">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <a class="navbar-brand" href="/teachers">Home</a>
+                </div>
+
+            <ul class="nav navbar-nav">
+
+                <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Courses<span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="/takeattandance">Course List </a></li>
+                        <li><a href="/teacheraddcourse">Add Course</a></li>
+
+                    </ul>
+                </li>
+
+                <li class="active"><a href="/takeattandance">Take Attendance</a></li>
+                <li><a href="#">Contact</a></li>
+                {%  if teacher.id  is None  %}
+                    <li><a href="/teacherlogout/">Login</a></li>
+                    {% else %}
+                    <li><a href="/teacherlogout/">Logout</a></li>
+                {% endif %}
+
+
+            </ul>
+            </div>
+            </nav>
+
+            <p style = "text-align: center; font-size: 20px  " ><strong>{{ teacher.name }}</strong> is logged in!</p>
+
+
+
+    </header>
+
+
+
+    <div class="container">
+
+        <p style="text-align: center"><strong>Student's list<br>
+        Lecture No: {{ teacher_courses.class_count }}</strong></p>
+
+    <div style="" class="list-group">
+
+    {% for item in student_courses  %}
+        <a href="#" style="margin: 8px 0" class="list-group-item list-group-item-action">{{ item.student_id.name }}</a>
+
+        {% for item_two in uniqueList %}
+           {% if item.student_id.id is item_two %}
+               <input class="form-check-input" type="checkbox" value="{{ item.userId }}" id="defaultCheck1" checked="checked">
+               <label> Attandance </label>
+
+
+           {% endif %}
+
+        {% endfor %}
+
+
+
+
+    {% endfor %}
+    </div>
+
+    <a href="/detect/{{ teacher_course_id }}"><button type="button" class="btn btn-primary">Take Attandance</button></a>
+    <a href="/detect/{{ teacher_course_id }}/submitattandance/{{ teacher_course_id }}"><button type="button" style="float: right" class="btn btn-primary">Submit Attandance</button></a>
+
+
+
+
+    </div>
+
+</body>
+</html>

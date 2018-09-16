@@ -1,0 +1,143 @@
+{% load staticfiles %}
+
+<!DOCTYPE html>
+<html>
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+{#<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">#}
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<link rel="stylesheet" href="{% static 'adminlte.min.css' %}">
+
+<title>Attendence System.</title>
+
+                {#navbar#}
+<header>
+
+    <style>
+
+ul {
+    list-style-type: none;
+    overflow: hidden;
+    background-color: #333;
+    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+    color: #9d9d9d
+
+}
+
+li {
+    float: left;
+}
+
+li a {
+
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+li a:hover {
+    {#background-color: #111;#}
+    color: #fff;
+    background-color: transparent;
+            }
+
+
+    </style>
+
+
+</header>
+
+
+<body>
+
+<ul>
+  <li><a class="active" href="/adminmain">Home</a></li>
+  <li><a href="/adminlogout">Logout</a></li>
+
+</ul>
+
+ 
+
+    
+    
+
+  
+<form style="padding-right: 100px; padding-left: 100px" action = "" method="POST" role="form">
+    
+    <div class="card-body">
+        {% csrf_token %}
+
+        <div class="form-group">
+            <label for="exampleInputPassword1">Institute Id</label>
+            <input type="text" class="form-control" name="institute_id" id="InstituteId" required>
+        </div>
+        <div class="form-group">
+            <label for="InputPassword">Password</label>
+            <input type="text" class="form-control" name="password" id="InputPassword" required>
+        </div>
+        <div class="form-group">
+            <label for="ConfirmPassword">Confirm Password</label>
+            <input type="text" class="form-control" name="confirm_password" id="ConfirmPassword" required>
+        </div>
+        <div class="form-group">
+            <label for="InputName">Name</label>
+            <input type="text" class="form-control" name="name" id="InputName" required>
+        </div>
+        <div class="form-group">
+            <label for="InputAddress">Address</label>
+            <input type="text" class="form-control" name="address" id="InputAddress" required>
+        </div>
+        <div class="form-group">
+            <label for="InputPhone">Phone</label>
+            <input type="text" class="form-control" name="phone" id="InputPhone" required>
+        </div>
+        <div class="form-group">
+            <label for="Inputemail">Email</label>
+            <input type="email" class="form-control" name="email" id="InputEmail" required>
+        </div>
+
+        <div class="form-group">
+            <label for="InputRole">Role_id</label>
+
+            <select name="role_id" required>
+                {% for item in roles %}
+                <option value="{{ item.id }}" name="role_id">{{ item.name }}</option>
+                {% endfor %}
+            </select>
+{#            <input type="text" class="form-control" name="role_id" id="InputEmail">#}
+
+        </div>
+        <div class="form-group">
+            <label for="InputDeptid">Department id</label>
+
+            <select name="dept_id" required>
+                {% for item in department %}
+                <option value="{{ item.id }}" name="dept_id">{{ item.name }}</option>
+                {% endfor %}
+            </select>
+{#            <input type="text" class="form-control" name="dept_id" id="InputEmail">#}
+
+        </div>
+        <div class="form-check">
+            <input type="checkbox" class="form-check-input" name="pic_status" id="exampleCheck1" required>
+            <label class="form-check-label" for="exampleCheck1">Picture Status</label>
+        </div>
+            
+            
+    </div>
+               
+    <div class="card-footer">
+           <input type="submit" value="post" class="btn btn-primary"></input>
+    </div>
+
+    
+</form>
+
+    
+</body>
+    
+</html>
